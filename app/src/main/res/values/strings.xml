@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Proyecto2PDM115</string>
+    <string name="app_name">Asistencia QR</string>
     <string name="boton_iniciar_sesion">Iniciar sesión</string>
     <string name="texto_bienvenida">Inicio de sesión</string>
 </resources>
