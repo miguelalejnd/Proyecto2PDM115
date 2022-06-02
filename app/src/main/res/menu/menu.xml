@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/buttonCerrarSesion"
+        android:title="Cerrar sesión"
+        app:showAsAction="withText"
+        android:icon="@drawable/ic_baseline_inicio_de_sesion_24"
+        />
+</menu>
