@@ -1,10 +1,9 @@
 package com.gp06.proyecto2pdm115;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CalendarView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 
 public class Calendario extends AppCompatActivity {
