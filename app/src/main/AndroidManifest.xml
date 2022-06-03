@@ -23,12 +23,6 @@
         </activity>
 
         <activity
-            android:name=".PDFVista"
-            android:exported="false" />
-        <activity
-            android:name=".Apuntes"
-            android:exported="false" />
-        <activity
             android:name=".Menu"
             android:exported="false" />
         <activity

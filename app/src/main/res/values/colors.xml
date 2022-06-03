@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="botones"> #4682B4</color>
+    <color name="colcal">#7EB6DE</color>
+    <color name="fondo">#fff</color>
 </resources>

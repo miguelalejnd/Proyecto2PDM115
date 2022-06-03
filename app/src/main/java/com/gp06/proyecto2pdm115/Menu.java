@@ -18,8 +18,8 @@ public class Menu extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void abrirApuntes(View view) {
+    /*public void abrirApuntes(View view) {
         Intent i=new Intent(this,Apuntes.class);
         startActivity(i);
-    }
+    }*/
 }
