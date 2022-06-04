@@ -62,4 +62,6 @@ public class InicioActivity extends AppCompatActivity {
         Intent i=new Intent(this, com.gp06.proyecto2pdm115.Menu.class);
         startActivity(i);
     }
+
+
 }
