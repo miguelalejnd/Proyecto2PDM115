@@ -4,7 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:background="@color/white"
+android:background="@color/fondo"
 tools:context=".Menu">
 <LinearLayout
     android:layout_width="match_parent"
@@ -16,7 +16,7 @@ tools:context=".Menu">
         android:id="@+id/textv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:text="MENU"
         android:textColor="@color/black"
         android:textSize="22dp"
@@ -27,11 +27,11 @@ tools:context=".Menu">
         android:id="@+id/buttonCalend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="40dp"
         android:onClick="abrirCalendario"
-        android:padding="50dp"
+        android:padding="20dp"
         android:text="Calendario"
-        android:textSize="20dp"
+        android:textSize="17dp"
         android:textColor="@color/black"
         android:background="@drawable/button_design"
         />
@@ -42,12 +42,23 @@ tools:context=".Menu">
         android:layout_marginTop="10dp"
         android:background="@drawable/button_design"
         android:onClick="abrirApuntes"
-        android:padding="50dp"
+        android:padding="20dp"
         android:text="Apuntes"
-        android:textSize="20dp"
+        android:textSize="17dp"
         android:textColor="@color/black"
         />
-
+    <Button
+        android:id="@+id/buttonApuntesVoz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_design"
+        android:onClick="abrirApuntesVoz"
+        android:padding="20dp"
+        android:text="Apuntes Por Voz"
+        android:textSize="17dp"
+        android:textColor="@color/black"
+        />
     <Button
         android:id="@+id/buttonApuntes2"
         android:layout_width="match_parent"
@@ -55,9 +66,9 @@ tools:context=".Menu">
         android:layout_marginTop="10dp"
         android:background="@drawable/button_design"
         android:onClick="abrirGenerador"
-        android:padding="50dp"
+        android:padding="20dp"
         android:text="@string/GenerarQr"
         android:textColor="@color/black"
-        android:textSize="20dp" />
+        android:textSize="17dp" />
 </LinearLayout>
 </ScrollView>

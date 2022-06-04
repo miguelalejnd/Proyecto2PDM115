@@ -18,13 +18,18 @@ public class Menu extends AppCompatActivity {
         startActivity(i);
     }
 
-    /*public void abrirApuntes(View view) {
+    public void abrirApuntes(View view) {
         Intent i=new Intent(this,Apuntes.class);
         startActivity(i);
-    }*/
-
+    }
+    public void abrirApuntesVoz(View view) {
+        Intent i=new Intent(this,ApuntesVoz.class);
+        startActivity(i);
+    }
     public void abrirGenerador(View view) {
         Intent i=new Intent(this,GeneradorQr.class);
         startActivity(i);
     }
+
+
 }

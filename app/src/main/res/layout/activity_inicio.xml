@@ -43,6 +43,7 @@
         android:layout_marginTop="32dp"
         android:text="MENU"
         android:onClick="IrMenu"
+        android:background="@drawable/button_design"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"

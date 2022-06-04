@@ -10,5 +10,6 @@
 
     <color name="botones"> #4682B4</color>
     <color name="colcal">#7EB6DE</color>
-    <color name="fondo">#fff</color>
+    <color name="fondo">#CDDAE0</color>
+    <color name="oscuro">#0D222C</color>
 </resources>

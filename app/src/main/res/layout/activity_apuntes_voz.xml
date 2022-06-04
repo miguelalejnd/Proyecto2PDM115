@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    tools:context=".ApuntesVoz">
+
+    <ImageButton
+        android:id="@+id/botonHablar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="125dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/oscuro"
+        android:padding="10dp"
+        android:src="@drawable/ic_microfono"
+        app:tint="@color/white" />
+
+    <TextView
+        android:id="@+id/textEntrada"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/botonHablar"
+        android:layout_marginTop="25dp"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginBottom="20dp"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:background="@color/white"
+        android:textSize="15dp" />
+</RelativeLayout>
