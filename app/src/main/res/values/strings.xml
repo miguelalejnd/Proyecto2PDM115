@@ -2,4 +2,9 @@
     <string name="app_name">Asistencia QR</string>
     <string name="boton_iniciar_sesion">Iniciar sesión</string>
     <string name="texto_bienvenida">Inicio de sesión</string>
+    <string name="generar">Generar</string>
+    <string name="limpiar">limpiar</string>
+    <string name="txtVisor">Resultados</string>
+    <string name="GenerarQr">Generar codigo QR</string>
+    <string name="Asistencia">Asistencia</string>
 </resources>

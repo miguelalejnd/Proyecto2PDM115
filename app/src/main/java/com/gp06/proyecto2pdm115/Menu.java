@@ -22,4 +22,9 @@ public class Menu extends AppCompatActivity {
         Intent i=new Intent(this,Apuntes.class);
         startActivity(i);
     }*/
+
+    public void abrirGenerador(View view) {
+        Intent i=new Intent(this,GeneradorQr.class);
+        startActivity(i);
+    }
 }

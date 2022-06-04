@@ -47,5 +47,17 @@ tools:context=".Menu">
         android:textSize="20dp"
         android:textColor="@color/black"
         />
+
+    <Button
+        android:id="@+id/buttonApuntes2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_design"
+        android:onClick="abrirGenerador"
+        android:padding="50dp"
+        android:text="@string/GenerarQr"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
 </LinearLayout>
 </ScrollView>
