@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,6 +41,9 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.android.gms.common.SignInButton;
 
 public class MainActivity extends AppCompatActivity {
+    /* url del servidor web */
+    private final String url_servidor_web = "https://proyecto2pdm115.000webhostapp.com/verificar_login.php";
+
     private static final String TAG = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
 
@@ -85,22 +90,52 @@ public class MainActivity extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+                .permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        // agregar un escuchador de evento al boton de iniciar sesion normal.
         buttonIniciarSesion.setOnClickListener(view -> {
             String correo = editTextCorreo.getText().toString();
             String password = editTextPassword.getText().toString();
 
-            // Aquí se debería verificar las credenciales: correo electrónico y contraseña
-            // y después guardar el correo en el archivo de texto con SharedPreferences.
+            if (TextUtils.isEmpty(correo) && TextUtils.isEmpty(password)) {
+                // Cuando el campo de correo o contraseña están vacios.
+                Snackbar.make(findViewById(R.id.buttonIniciarSesion),
+                              "Por favor, introduzca su correo y contraseña",
+                              Snackbar.LENGTH_SHORT).show();
+            }
+            else {
+                String url = url_servidor_web + "?correo=" + correo + "&clave=" + password;
 
-            SharedPreferences.Editor editor = sharedpreferences.edit();
-            editor.putString(CORREO, correo);
-            editor.commit();
+                // Aquí se debería verificar las credenciales: correo electrónico y contraseña
+                String respuestaString = ControladorServicio.obtenerRespuestaPeticion(url, this);
 
-            Intent intent = new Intent(MainActivity.this, InicioActivity.class);
-            startActivity(intent);
+                int respuesta = ControladorServicio.verificarCorreoYClave(respuestaString, this);
 
-            // Esto es para que cuando presione el boton atras no regrese a la pantalla anterior.
-            finish();
+                if (respuesta == 1) {
+                    // mostrar un snackbar con el correo con que se inició.
+                    Snackbar.make(findViewById(R.id.buttonIniciarSesion),
+                            "Inicio de sesión con " + correo, Snackbar.LENGTH_SHORT).show();
+
+                    // y después guardar el correo en el archivo de texto con SharedPreferences.
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    editor.putString(CORREO, correo);
+                    editor.commit();
+
+                    Intent intent = new Intent(MainActivity.this, InicioActivity.class);
+                    startActivity(intent);
+
+                    // Esto es para que cuando presione el boton atrás no regrese a la pantalla anterior.
+                    finish();
+                }
+                else {
+                    // mostrar un snackbar indicando qué el correo o contraseña son incorrectos.
+                    Snackbar.make(findViewById(R.id.buttonIniciarSesion),
+                            "El correo o la cotraseña son incorrectos.", Snackbar.LENGTH_SHORT)
+                            .show();
+                }
+            }
         });
 
         buttonIniciarSesionGoogle.setOnClickListener(v -> signIn());
@@ -158,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // mostrar un snackbar con el correo con que se inició.
                 Snackbar.make(findViewById(R.id.buttonIniciarSesion),
-                              "Inicio de sesión con " + account.getEmail(), Snackbar.LENGTH_SHORT).show();
+                        "Inicio de sesión con " + account.getEmail(), Snackbar.LENGTH_SHORT).show();
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed", e);

@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="244dp"
         android:ems="10"
-        android:hint="Correo"
+        android:hint="Correo electrónico"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,6 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        android:textSize="20dp"
         android:text="@string/texto_bienvenida"
         app:layout_constraintBottom_toTopOf="@+id/editTextCorreo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,11 +70,12 @@
         android:id="@+id/buttonLoginGoogle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="4dp"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="@+id/buttonIniciarSesion"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/buttonIniciarSesion"
-        app:layout_constraintTop_toBottomOf="@+id/buttonIniciarSesion"></com.google.android.gms.common.SignInButton>
+        app:layout_constraintTop_toBottomOf="@+id/buttonIniciarSesion">
+    </com.google.android.gms.common.SignInButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
