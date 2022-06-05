@@ -1,8 +1,12 @@
 package com.gp06.proyecto2pdm115;
 
 import android.content.Context;
+import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -15,12 +19,21 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 public class ControladorServicio {
+    private static File filePatch;
 
     public static String obtenerRespuestaPeticion(String url, Context ctx) {
 
@@ -71,6 +84,72 @@ public class ControladorServicio {
             Log.v("Peticion",e.toString());
         }
         return valor;
+    }
+
+    public static void crearArchivoExcel(String json, Context ctx) {
+        JSONArray jsonArray = null;
+
+        try {
+            jsonArray = new JSONArray(json);
+        } catch (JSONException jsonException) {
+            jsonException.printStackTrace();
+            Toast.makeText(ctx, "Error en parseo de JSON", Toast.LENGTH_LONG)
+                    .show();
+        }
+
+        if (jsonArray.length() == 0)
+            Toast.makeText(ctx, "Usted no es un profesor", Toast.LENGTH_LONG).show();
+        else {
+            HSSFWorkbook workbook = new HSSFWorkbook();
+            HSSFSheet sheet = workbook.createSheet();
+
+            // primero crear fila de cabecera
+            HSSFRow rowHEading = sheet.createRow(0);
+            rowHEading.createCell(0).setCellValue("Correo");
+            rowHEading.createCell(1).setCellValue("Marca de tiempo");
+            rowHEading.createCell(2).setCellValue("Tipo");
+            rowHEading.createCell(3).setCellValue("Comentario");
+            rowHEading.createCell(4).setCellValue("Código qr leido");
+
+            // crear una fila por cada objeto json en el array json.
+            JSONObject obj = null;
+            for (int i = 0; i < jsonArray.length(); i++) {
+                try {
+                    obj = jsonArray.getJSONObject(i);
+
+                    HSSFRow row = sheet.createRow(i + 1);
+
+                    row.createCell(0).setCellValue(obj.getString("usuario_correo"));
+                    row.createCell(1).setCellValue(obj.getString("marca_de_tiempo"));
+                    row.createCell(2).setCellValue(obj.getString("tipo"));
+                    row.createCell(3).setCellValue(obj.getString("comentario"));
+                    row.createCell(4).setCellValue(obj.getString("codigo_qr_leido"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            filePatch = new File(Environment.getExternalStorageDirectory() +
+                    "/reporte_de_asistencias.xls");
+
+            try {
+                if (!filePatch.exists())
+                    filePatch.createNewFile();
+
+                FileOutputStream fileOutputStream = new FileOutputStream(filePatch);
+
+                workbook.write(fileOutputStream);
+
+                if (fileOutputStream != null) {
+                    fileOutputStream.flush();
+                    fileOutputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Toast.makeText(ctx, "Reporte de asistencias guardado", Toast.LENGTH_LONG)
+                    .show();
+        }
     }
 
     public static String obtenerRespuestaPost(String url, JSONObject obj,

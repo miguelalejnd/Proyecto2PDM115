@@ -42,7 +42,7 @@ import com.google.android.gms.common.SignInButton;
 
 public class MainActivity extends AppCompatActivity {
     /* url del servidor web */
-    private final String url_servidor_web = "https://proyecto2pdm115.000webhostapp.com/verificar_login.php";
+    public static final String url_servidor_web = "https://proyecto2pdm115.000webhostapp.com/";
 
     private static final String TAG = "GoogleActivity";
     private static final int RC_SIGN_IN = 9001;
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                               Snackbar.LENGTH_SHORT).show();
             }
             else {
-                String url = url_servidor_web + "?correo=" + correo + "&clave=" + password;
+                String url = url_servidor_web + "verificar_login.php" + "?correo=" + correo + "&clave=" + password;
 
                 // Aquí se debería verificar las credenciales: correo electrónico y contraseña
                 String respuestaString = ControladorServicio.obtenerRespuestaPeticion(url, this);
