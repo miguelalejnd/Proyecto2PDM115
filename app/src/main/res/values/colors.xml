@@ -12,4 +12,7 @@
     <color name="colcal">#7EB6DE</color>
     <color name="fondo">#CDDAE0</color>
     <color name="oscuro">#0D222C</color>
+    <color name="blue">#0000FF</color>
+    <color name="gray">#888</color>
+
 </resources>

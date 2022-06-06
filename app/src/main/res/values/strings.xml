@@ -7,4 +7,7 @@
     <string name="txtVisor">Resultados</string>
     <string name="GenerarQr">Generar codigo QR</string>
     <string name="Asistencia">Asistencia</string>
+
+    <string name="back"><![CDATA[<-]]></string>
+    <string name="forward"><![CDATA[->]]></string>
 </resources>

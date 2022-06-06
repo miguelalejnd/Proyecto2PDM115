@@ -16,6 +16,12 @@
         android:theme="@style/Theme.AppCompat.DayNight"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".WeekViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EventEditActivity"
+            android:exported="false" />
+        <activity
             android:name=".ApuntesVoz"
             android:exported="false" />
         <activity
