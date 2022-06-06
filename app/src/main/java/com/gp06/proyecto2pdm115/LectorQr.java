@@ -45,7 +45,7 @@ public class LectorQr extends AppCompatActivity {
         marcar=findViewById(R.id.btnMarcar);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.tipo,
-                android.R.layout.simple_spinner_item);
+                android.R.layout.simple_spinner_dropdown_item);
 
         tipo.setAdapter(adapter);
 

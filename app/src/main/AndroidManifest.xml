@@ -37,7 +37,8 @@
             android:parentActivityName=".Menu" />
         <activity
             android:name=".LectorQr"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".Menu" />
         <activity
             android:name=".InicioActivity"
             android:exported="false" />
