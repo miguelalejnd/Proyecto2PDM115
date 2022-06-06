@@ -65,4 +65,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore'
 
     implementation 'org.apache.poi:poi:3.17'
+
+    implementation 'com.opencsv:opencsv:4.6'
 }

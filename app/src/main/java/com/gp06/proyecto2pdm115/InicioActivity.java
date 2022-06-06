@@ -100,4 +100,25 @@ public class InicioActivity extends AppCompatActivity {
         String respuestaString = ControladorServicio.obtenerRespuestaPeticion(url, this);
         ControladorServicio.crearArchivoExcel(respuestaString, this);
     }
+
+    public void crearReporteAsistenciaTexto(View v) {
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_EXTERNAL_STORAGE},
+                    PackageManager.PERMISSION_GRANTED);
+        }
+
+        SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.MyPREFERENCES,
+                Context.MODE_PRIVATE);
+
+        String correo = sharedpreferences.getString(MainActivity.CORREO,null);
+
+        String url = MainActivity.url_servidor_web + "obtener_listado_asistencia.php" +
+                "?correo=" + correo;
+
+        String respuestaString = ControladorServicio.obtenerRespuestaPeticion(url, this);
+        ControladorServicio.crearArchivoDeTexto(respuestaString, this);
+    }
 }//https://proyecto2pdm115.000webhostapp.com/verificar_login.php?correo=lj16001@ues.edu.sv

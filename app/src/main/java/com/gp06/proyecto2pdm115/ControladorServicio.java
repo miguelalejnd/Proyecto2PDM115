@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.opencsv.CSVWriter;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -29,6 +30,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -144,11 +146,58 @@ public class ControladorServicio {
                     fileOutputStream.flush();
                     fileOutputStream.close();
                 }
+                Toast.makeText(ctx, "Reporte de asistencias guardado como excel", Toast.LENGTH_LONG)
+                        .show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Toast.makeText(ctx, "Reporte de asistencias guardado", Toast.LENGTH_LONG)
+        }
+    }
+
+    public static void crearArchivoDeTexto(String json, Context ctx) {
+        JSONArray jsonArray = null;
+
+        try {
+            jsonArray = new JSONArray(json);
+        } catch (JSONException jsonException) {
+            jsonException.printStackTrace();
+            Toast.makeText(ctx, "Error en parseo de JSON", Toast.LENGTH_LONG)
                     .show();
+        }
+
+        if (jsonArray.length() == 0)
+            Toast.makeText(ctx, "Usted no es un profesor", Toast.LENGTH_LONG).show();
+        else {
+            filePatch = new File(Environment.getExternalStorageDirectory() +
+                    "/reporte_de_asistencias.csv");
+
+            try {
+                if (!filePatch.exists())
+                    filePatch.createNewFile();
+                CSVWriter csvWriter = new CSVWriter(new FileWriter(filePatch));
+                String[] heading = {"Correo", "Marca de tiempo", "Tipo", "Comentario", "Código qr leido"};
+                csvWriter.writeNext(heading);
+
+                JSONObject obj = null;
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    obj = jsonArray.getJSONObject(i);
+
+                    String[] datos = {obj.getString("usuario_correo"),
+                                      obj.getString("marca_de_tiempo"),
+                                      obj.getString("tipo"),
+                                      obj.getString("comentario"),
+                                      obj.getString("codigo_qr_leido")};
+
+                    csvWriter.writeNext(datos);
+                }
+
+                csvWriter.close();
+
+                Toast.makeText(ctx, "Reporte de asistencias guardado como texto", Toast.LENGTH_LONG)
+                        .show();
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 
