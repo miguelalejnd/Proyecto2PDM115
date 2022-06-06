@@ -90,13 +90,14 @@ public class LectorQr extends AppCompatActivity {
             String tipoSel = tipoSeleccionado;
             String marcaTiempo = fecha;
             String coment = comentario.getText().toString();
+            String correccionComent= coment.replace(" ", "%20");
             String codigoQrLeido = txtVisor.getText().toString();
             String url = null;
             JSONObject datosAsistencia = new JSONObject();
             JSONObject registro_de_asistencia = new JSONObject();
 
             url = urlHost + "?tipo=" + tipoSel + "&marca_de_tiempo=" + marcaTiempo +
-                    "&usuario_correo=" + usuarioCorreo + "&comentario=" + coment +
+                    "&usuario_correo=" + usuarioCorreo + "&comentario=" + correccionComent +
                     "&codigo_qr_leido=" + codigoQrLeido;
 
             ControladorServicio.insertarAsistenciaExterno(url, this);
