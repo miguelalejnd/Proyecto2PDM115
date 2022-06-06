@@ -17,19 +17,24 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".WeekViewActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".Calendario" />
         <activity
             android:name=".EventEditActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".WeekViewActivity" />
         <activity
             android:name=".ApuntesVoz"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".Menu" />
         <activity
             android:name=".Apuntes"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".Menu" />
         <activity
             android:name=".GeneradorQr"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".Menu" />
         <activity
             android:name=".LectorQr"
             android:exported="false" />
@@ -47,10 +52,12 @@
         </activity>
         <activity
             android:name=".Menu"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".InicioActivity"/>
         <activity
             android:name=".Calendario"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".Menu" />
 
         <uses-library
             android:name="org.apache.http.legacy"
