@@ -6,56 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".InicioActivity">
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_inicio_de_sesion_scanner_80" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
+        android:layout_marginTop="70dp"
+        android:text="Inicio"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="279dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="210dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="70dp"
         android:background="@drawable/button_design"
         android:onClick="IrMenu"
-        android:text="MENU"
+        android:padding="20dp"
+        android:text="MENÚ DE UTILIDADES"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="210dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/button_design"
         android:onClick="IrAsistencia"
+        android:padding="20dp"
         android:text="@string/Asistencia"
         app:layout_constraintEnd_toEndOf="@+id/button"
         app:layout_constraintHorizontal_bias="0.0"
@@ -64,13 +48,12 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="210dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/button_design"
         android:onClick="crearReporteAsistenciaExcel"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:padding="20dp"
         android:text="Reporte de asistencias a excel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,11 +61,10 @@
 
     <Button
         android:id="@+id/buttonArchivoDeTexto"
-        android:layout_width="210dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:padding="20dp"
         android:background="@drawable/button_design"
         android:onClick="crearReporteAsistenciaTexto"
         android:text="Reporte de asistencias a texto"
