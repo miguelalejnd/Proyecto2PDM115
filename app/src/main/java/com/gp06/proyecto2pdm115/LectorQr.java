@@ -90,6 +90,7 @@ public class LectorQr extends AppCompatActivity {
             String tipoSel = tipoSeleccionado;
             String marcaTiempo = fecha;
             String coment = comentario.getText().toString();
+            //%20 son espacios en blanco permitidos en phpmyadmin
             String correccionComent= coment.replace(" ", "%20");
             String codigoQrLeido = txtVisor.getText().toString();
             String url = null;
