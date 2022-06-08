@@ -3,6 +3,7 @@ package com.gp06.proyecto2pdm115;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +32,12 @@ public class GeneradorQr extends AppCompatActivity {
         etInput=findViewById(R.id.et_input);
         btGenerate=findViewById(R.id.bt_generate);
         ivOutput=findViewById(R.id.iv_output);
+
+        SharedPreferences sharedpreferences = getSharedPreferences(MainActivity.MyPREFERENCES,
+                Context.MODE_PRIVATE);
+
+        String correo = sharedpreferences.getString(MainActivity.CORREO,null);
+        etInput.setText(correo);
 
         btGenerate.setOnClickListener(new View.OnClickListener() {
             @Override

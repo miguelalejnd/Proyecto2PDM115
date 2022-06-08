@@ -15,6 +15,7 @@
         android:text=""
         android:id="@+id/et_input"
         android:hint="Enter text"
+        android:focusable="false"
         android:padding="12dp"
         android:background="@android:drawable/editbox_background"/>
 
